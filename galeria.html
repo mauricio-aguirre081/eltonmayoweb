@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galería de fotos | Fundación Elton Mayo</title>
+  <meta name="description" content="Galería de fotos de la Fundación Elton Mayo: entregas de diplomas, cursos y actividades en todo el NOA." />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800;900&family=Nunito+Sans:wght@400;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M17.5 14.4c-.3-.1-1.8-.9-2-1s-.5-.1-.7.1-.8 1-.9 1.2-.3.2-.6.1a8.2 8.2 0 0 1-4-3.5c-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.8.4 3.5 3.5 0 0 0-1.1 2.6 6 6 0 0 0 1.3 3.2c.2.2 2.2 3.4 5.4 4.8 2 .9 2.8.9 3.8.8.6-.1 1.8-.7 2-1.5.3-.7.3-1.3.2-1.5l-.3-.9zM12 21.8a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8zM12 0a12 12 0 0 0-10.3 18L0 24l6.2-1.6A12 12 0 1 0 12 0z"/></symbol>
+</svg>
+
+<header class="nav is-scrolled" id="nav">
+  <div class="container nav__inner">
+    <a href="index.html" class="nav__brand"><img src="img/logo2.png" alt="Fundación Elton Mayo" /></a>
+    <p class="script">Acortando distancia con el conocimiento</p>
+    <a href="index.html#galeria" class="btn btn--gold btn--sm">← Volver al inicio</a>
+  </div>
+</header>
+
+<main>
+  <section class="page-head">
+    <div class="container head head--light">
+      <p class="eyebrow">Galería</p>
+      <h1>Más momentos de nuestra comunidad</h1>
+      <p>Entregas de diplomas, cursos y actividades en todo el NOA. Tocá una foto para ampliarla.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <!-- Continuación de la galería del inicio: las fotos se cargan desde galeria.js -->
+      <div class="gallery" id="galleryFull"></div>
+      <div class="gallery__more"><a href="index.html#contacto" class="btn btn--gold">Quiero inscribirme</a></div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer footer--slim">
+  <div class="container footer__bottom">
+    <span>© <span id="year"></span> Fundación Elton Mayo · Res. Min. 105/18 · Personería Jurídica N.º 104039</span>
+    <a href="index.html">Volver al inicio</a>
+  </div>
+</footer>
+
+<a href="https://wa.me/5493874521350?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20cursos" class="wa-float" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp"><svg><use href="#i-wa"/></svg></a>
+<a href="https://wa.me/5493874033304?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20cursos" class="wa-float wa-float--2" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp (segundo número)"><svg><use href="#i-wa"/></svg></a>
+
+<script src="galeria.js"></script>
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

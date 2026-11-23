@@ -27,7 +27,34 @@
       "Secretariado Médico"
     ]}
   };
-  var IMGS = ["img/presencial.jpg", "img/distancia.jpg", "img/virtual.jpg", "img/egresados.jpg", "img/alumnos.jpg"];
+  // Foto de cada curso (img/cursos/). Si un curso no tiene foto, usa la de su grupo.
+  var COURSE_IMG = {
+    "Operador Polivalente de Litio y Logística Minera": "operador-polivalente-litio",
+    "Operador e Instalador de Sistemas Fotovoltaicos": "op-instalador-fotovoltaicos",
+    "Auxiliar en Seguridad e Higiene Laboral": "aux-seguridad-higiene-laboral",
+    "Introducción a SAP y Asistente de Capital Humano": "sap-capital-humano",
+    "Secretariado Administrativo Contable": "sec-administrativo-contable",
+    "Asistente en Liquidación de Sueldos y Selección de Personal": "liq-sueldos-personal",
+    "Asistente Contable Impositivo": "asist-contable-impositivo",
+    "Operador Minero": "operador-minero",
+    "Administrativo Especializado en Empresa Minera": "admin-especial-empresa-minera",
+    "Logística Minera": "logistica-minera",
+    "Agente Financiero": "agente-financiero",
+    "Asesor Inmobiliario": "asesor-inmobiliario",
+    "Asistente Ceremonial y Protocolo": "asist-ceremonial-protocolo",
+    "Asistente de Marketing": "asistente-marketing",
+    "Asistente en Recursos Humanos": "asistente-recursos-humanos",
+    "Ayudantía Pre-Escolar": "ayudantia-preescolar",
+    "Cajero Bancario y Comercial": "cajero-bancario-comercial",
+    "Gestión de Ventas": "gestion-de-ventas",
+    "Gestión Previsional": "gestion-previsional",
+    "Guía de Desarrollo de Formulación de Proyectos": "guia-formulacion-proyectos",
+    "Operador de Agencia de Viajes": "operador-agencia-viajes",
+    "Organizador de Eventos": "organizacion-eventos",
+    "Recepcionista de Hoteles": "recepcionista-hoteles",
+    "Secretariado Jurídico": "secretariado-juridico",
+    "Secretariado Médico": "secretariado-medico"
+  };
 
   function waLink(text) { return "https://wa.me/" + WA + "?text=" + encodeURIComponent(text); }
 
@@ -83,8 +110,8 @@
       art.className = "course";
       art.style.animationDelay = (i * 0.06) + "s";
       var img = document.createElement("img");
-      img.src = key === "distancia" ? IMGS[i % IMGS.length] : g.img;
-      img.alt = ""; img.loading = "lazy";
+      img.src = COURSE_IMG[name] ? "img/cursos/" + COURSE_IMG[name] + ".jpg" : g.img;
+      img.alt = name; img.loading = "lazy";
       var body = document.createElement("div"); body.className = "course__body";
       var tag = document.createElement("span"); tag.className = "course__tag"; tag.textContent = g.tag;
       var h = document.createElement("h3"); h.textContent = name;
@@ -178,38 +205,6 @@
     }
     document.getElementById("formOk").hidden = false;
     form.reset();
-  });
-
-  // Gallery lightbox
-  var lb = document.getElementById("lightbox");
-  var lbImg = document.getElementById("lbImg");
-  var lbCap = document.getElementById("lbCap");
-  var photos = Array.prototype.slice.call(document.querySelectorAll(".gallery__item img"));
-  var cur = 0;
-  function show(n) {
-    cur = (n + photos.length) % photos.length;
-    lbImg.style.animation = "none"; void lbImg.offsetWidth; lbImg.style.animation = "";
-    lbImg.src = photos[cur].src; lbImg.alt = photos[cur].alt; lbCap.textContent = photos[cur].alt;
-  }
-  photos.forEach(function (img, i) {
-    img.parentElement.addEventListener("click", function () {
-      show(i);
-      if (lb.showModal) lb.showModal(); else lb.setAttribute("open", "");
-      document.body.style.overflow = "hidden";
-    });
-  });
-  function closeLb() { if (lb.close) lb.close(); else lb.removeAttribute("open"); }
-  lb.addEventListener("close", function () { document.body.style.overflow = ""; });
-  lb.addEventListener("click", function (e) {
-    var act = e.target.closest("[data-lb]");
-    if (act) {
-      var a = act.dataset.lb;
-      if (a === "close") closeLb(); else show(cur + (a === "next" ? 1 : -1));
-    } else if (e.target === lb || e.target.tagName === "FIGURE") closeLb();
-  });
-  lb.addEventListener("keydown", function (e) {
-    if (e.key === "ArrowRight") show(cur + 1);
-    else if (e.key === "ArrowLeft") show(cur - 1);
   });
 
   document.getElementById("year").textContent = new Date().getFullYear();

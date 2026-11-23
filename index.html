@@ -32,7 +32,7 @@
 <header class="nav" id="nav">
   <div class="container nav__inner">
     <a href="#inicio" class="nav__brand"><img src="img/logo2.png" alt="Fundación Elton Mayo" /></a>
-    <p class="script">Acortando distancia con el conocimiento</p>
+    <p class="script">Acortando distancias con el conocimiento</p>
     <button class="nav__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
     <nav class="nav__menu" id="navMenu">
       <a href="#inicio">Inicio</a>
@@ -223,14 +223,9 @@
   <section class="section reveal" id="galeria">
     <div class="container">
       <div class="head"><p class="eyebrow eyebrow--dark">Galería</p><h2>Momentos que nos enorgullecen</h2></div>
-      <div class="gallery" id="gallery">
-        <button class="gallery__item" type="button"><img src="img/presencial.jpg" alt="Clase presencial" loading="lazy" /></button>
-        <button class="gallery__item" type="button"><img src="img/egresados.jpg" alt="Egresados de la fundación" loading="lazy" /></button>
-        <button class="gallery__item" type="button"><img src="img/alumnos.jpg" alt="Alumnos en el aula" loading="lazy" /></button>
-        <button class="gallery__item" type="button"><img src="img/virtual.jpg" alt="Clase virtual" loading="lazy" /></button>
-        <button class="gallery__item" type="button"><img src="img/distancia.jpg" alt="Estudio a distancia" loading="lazy" /></button>
-        <button class="gallery__item" type="button"><img src="img/salta.jpg" alt="Salta" loading="lazy" /></button>
-      </div>
+      <!-- Las fotos se cargan desde galeria.js -->
+      <div class="gallery" id="gallery"></div>
+      <div class="gallery__more" id="galleryMore"><a href="galeria.html" class="btn btn--outline">Ver más fotos →</a></div>
     </div>
   </section>
 
@@ -270,7 +265,7 @@
   <div class="container footer__grid">
     <div>
       <img src="img/logo2.png" alt="Fundación Elton Mayo" class="footer__logo" />
-      <p class="script">Acortando distancia con el conocimiento</p>
+      <p class="script">Acortando distancias con el conocimiento</p>
     </div>
     <div><h4>Secciones</h4><a href="#nosotros">Nosotros</a><a href="#cursos">Cursos</a><a href="#respaldo">Respaldo</a><a href="#contacto">Contacto</a></div>
     <div><h4>Contacto</h4><a href="tel:+5493874521350">+54 9 387 452-1350</a><a href="mailto:info@eltonmayo.org">info@eltonmayo.org</a><span>Salta, Argentina</span></div>
@@ -291,14 +286,7 @@
 <a href="https://wa.me/5493874521350?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20cursos" class="wa-float" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp"><svg><use href="#i-wa"/></svg></a>
 <a href="https://wa.me/5493874033304?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20cursos" class="wa-float wa-float--2" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp (segundo número)"><svg><use href="#i-wa"/></svg></a>
 <button class="to-top" id="toTop" aria-label="Volver arriba">↑</button>
-
-<dialog class="lightbox" id="lightbox" aria-label="Foto ampliada">
-  <button class="lightbox__close" type="button" data-lb="close" aria-label="Cerrar">×</button>
-  <button class="lightbox__nav lightbox__nav--prev" type="button" data-lb="prev" aria-label="Foto anterior">‹</button>
-  <figure><img id="lbImg" alt="" /><figcaption id="lbCap"></figcaption></figure>
-  <button class="lightbox__nav lightbox__nav--next" type="button" data-lb="next" aria-label="Foto siguiente">›</button>
-</dialog>
-
 <script src="script.js"></script>
+<script src="galeria.js"></script>
 </body>
 </html>
