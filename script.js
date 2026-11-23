@@ -128,6 +128,91 @@
   });
   render("nuevos");
 
+  // Próximos cursos. Fecha en formato AAAA-MM-DD; se ordenan solos por fecha.
+  // Cuando la fecha de inicio ya pasó, la tarjeta se marca como "Ya comenzó".
+  var PROXIMOS = [
+    { start: "2026-11-06", name: "Operador Minero", img: "operador-minero",
+      mode: "Presencial", place: "San Antonio de los Cobres, Salta",
+      info: "Mercado Artesanal de la Municipalidad de San Antonio de los Cobres. Capacitación práctica y certificación para tu CV." },
+    { start: "2026-11-06", name: "Operador Polivalente de Litio", img: "operador-litio",
+      mode: "Presencial", place: "San Antonio de los Cobres, Salta",
+      info: "Laboratorio, soporte y logística minera. Mercado Artesanal de la Municipalidad de San Antonio de los Cobres." },
+    { start: "2026-11-16", name: "Operador Pañolero Especializado en Logística Minera", img: "panolero-logistica",
+      mode: "Online con docente", place: "Desde tu lugar",
+      info: "Preparación específica, actualizada y profesional para introducirte en la actividad minera." },
+    { start: "2026-11-16", name: "Operador Polivalente de Litio", img: "operador-litio",
+      mode: "Online con docente", place: "Desde tu lugar",
+      info: "Preparación específica, actualizada y profesional para introducirte en la actividad minera." },
+    { start: "2026-11-16", name: "Operador e Instalador de Sistemas de Generación Fotovoltaica", img: "fotovoltaica",
+      mode: "Online con docente", place: "Desde tu lugar", wa: "5493874033304",
+      info: "12 clases intensivas con el Ing. Guillermo Ledesma: electricidad solar, componentes, tipos de instalaciones, seguridad y normativa." },
+    { start: "2026-12-10", name: "Operador de Plantas y Procesamientos Mineros", img: "plantas-procesamiento",
+      mode: "Presencial", place: "Güemes, Salta", gift: true,
+      info: "Formate hoy para un futuro mejor en la actividad minera." },
+    { start: "2026-12-10", name: "Manipulación de Sustancias Peligrosas en Actividad Minera", img: "sustancias-peligrosas",
+      mode: "Presencial", place: "Güemes, Salta", gift: true,
+      info: "Formate hoy para un futuro mejor en la actividad minera." },
+    { start: "2026-12-10", name: "Asistente de Hotelería y Sistemas de Reservas", img: "hoteleria",
+      mode: "Online con docente", place: "Todo el país", gift: true,
+      info: "Capacitación especialmente diseñada para trabajar en el sector turístico." },
+    { start: "2026-12-11", name: "Operador Rigger y Señalador", img: "rigger-senalador",
+      mode: "Presencial", place: "Ledesma, Jujuy y localidades vecinas", gift: true,
+      info: "Nuevas oportunidades de formación para seguir creciendo profesionalmente." },
+    { start: "2026-12-11", name: "Operador Polivalente de Litio", img: "operador-litio",
+      mode: "Presencial", place: "Ledesma, Jujuy y localidades vecinas", gift: true,
+      info: "Litio, soporte y logística. Nuevas oportunidades para seguir creciendo profesionalmente." }
+  ];
+  var MESES = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"];
+  var MESES_L = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
+  var upBox = document.getElementById("upcoming");
+  if (upBox) {
+    var today = new Date(); today.setHours(0, 0, 0, 0);
+    PROXIMOS.map(function (c) {
+      var p = c.start.split("-");
+      return { c: c, d: new Date(+p[0], +p[1] - 1, +p[2]) };
+    }).sort(function (a, b) {
+      var pa = a.d < today, pb = b.d < today;           // los que ya empezaron van al final
+      return pa !== pb ? (pa ? 1 : -1) : a.d - b.d;
+    }).forEach(function (o, i) {
+      var c = o.c, d = o.d, started = d < today;
+      var art = document.createElement("article");
+      art.className = "up" + (started ? " up--started" : "");
+      art.style.animationDelay = (i * 0.06) + "s";
+      var media = document.createElement("div"); media.className = "up__media";
+      var img = document.createElement("img");
+      img.src = "img/proximos/" + c.img + ".svg"; img.alt = ""; img.loading = "lazy";
+      var date = document.createElement("div"); date.className = "up__date";
+      var dd = document.createElement("strong"); dd.textContent = String(d.getDate()).padStart(2, "0");
+      var mm = document.createElement("span"); mm.textContent = MESES[d.getMonth()];
+      date.append(dd, mm); media.append(img, date);
+      if (started || c.gift) {
+        var flag = document.createElement("span");
+        flag.className = "up__flag" + (started ? " up__flag--started" : "");
+        flag.textContent = started ? "Ya comenzó" : "🎁 Curso de regalo a los 10 primeros";
+        media.appendChild(flag);
+      }
+      var body = document.createElement("div"); body.className = "up__body";
+      var tag = document.createElement("span");
+      tag.className = "course__tag" + (/online/i.test(c.mode) ? " course__tag--online" : "");
+      tag.textContent = c.mode;
+      var h = document.createElement("h3"); h.textContent = c.name;
+      var when = document.createElement("p"); when.className = "up__meta";
+      when.textContent = "📅 Inicio: " + d.getDate() + " de " + MESES_L[d.getMonth()] + " de " + d.getFullYear();
+      var where = document.createElement("p"); where.className = "up__meta";
+      where.textContent = "📍 " + c.place;
+      var info = document.createElement("p"); info.textContent = c.info;
+      var a = document.createElement("a");
+      a.className = "btn btn--sm " + (started ? "btn--outline" : "btn--gold");
+      a.target = "_blank"; a.rel = "noopener";
+      a.href = "https://wa.me/" + (c.wa || WA) + "?text=" + encodeURIComponent(
+        (started ? "Hola, quiero saber la próxima fecha del curso: " : "Hola, quiero reservar un lugar en: ") +
+        c.name + " (" + c.mode + " · " + c.place + ")");
+      a.textContent = started ? "Consultar próxima fecha" : "Reservar lugar";
+      body.append(tag, h, when, where, info, a);
+      art.append(media, body); upBox.appendChild(art);
+    });
+  }
+
   // Course select
   var sel = document.getElementById("f-course");
   Object.keys(COURSES).forEach(function (k) {
