@@ -4,13 +4,13 @@
   var EMAIL = "info@eltonmayo.org";
 
   var COURSES = {
-    nuevos: { tag: "Nuevo 2026", img: "img/presencial.jpg", list: [
+    nuevos: { tag: "Nuevo 2026", img: "./img/presencial.jpg", list: [
       "Operador Polivalente de Litio y Logística Minera",
       "Operador e Instalador de Sistemas Fotovoltaicos",
       "Auxiliar en Seguridad e Higiene Laboral",
       "Introducción a SAP y Asistente de Capital Humano"
     ]},
-    presenciales: { tag: "Presencial", img: "img/egresados.jpg", list: [
+    presenciales: { tag: "Presencial", img: "./img/egresados.jpg", list: [
       "Secretariado Administrativo Contable",
       "Asistente en Liquidación de Sueldos y Selección de Personal",
       "Asistente Contable Impositivo",
@@ -18,7 +18,7 @@
       "Administrativo Especializado en Empresa Minera",
       "Logística Minera"
     ]},
-    distancia: { tag: "A distancia · 3 meses", img: "img/distancia.jpg", list: [
+    distancia: { tag: "A distancia · 3 meses", img: "./img/distancia.jpg", list: [
       "Agente Financiero", "Asesor Inmobiliario", "Asistente Ceremonial y Protocolo",
       "Asistente de Marketing", "Asistente en Recursos Humanos", "Ayudantía Pre-Escolar",
       "Cajero Bancario y Comercial", "Gestión de Ventas", "Gestión Previsional",
@@ -110,7 +110,7 @@
       art.className = "course";
       art.style.animationDelay = (i * 0.06) + "s";
       var img = document.createElement("img");
-      img.src = COURSE_IMG[name] ? "img/cursos/" + COURSE_IMG[name] + ".jpg" : g.img;
+      img.src = COURSE_IMG[name] ? "./img/cursos/" + COURSE_IMG[name] + ".jpg" : g.img;
       img.alt = name; img.loading = "lazy";
       var body = document.createElement("div"); body.className = "course__body";
       var tag = document.createElement("span"); tag.className = "course__tag"; tag.textContent = g.tag;
@@ -181,7 +181,7 @@
       art.style.animationDelay = (i * 0.06) + "s";
       var media = document.createElement("div"); media.className = "up__media";
       var img = document.createElement("img");
-      img.src = "img/cursos/" + c.img + ".jpg"; img.alt = c.name; img.loading = "lazy";
+      img.src = "./img/cursos/" + c.img + ".jpg"; img.alt = c.name; img.loading = "lazy";
       var date = document.createElement("div"); date.className = "up__date";
       var dd = document.createElement("strong"); dd.textContent = String(d.getDate()).padStart(2, "0");
       var mm = document.createElement("span"); mm.textContent = MESES[d.getMonth()];
