@@ -129,36 +129,37 @@
   render("nuevos");
 
   // Próximos cursos. Fecha en formato AAAA-MM-DD; se ordenan solos por fecha.
+  // img: nombre de la foto en img/cursos/ (sin .jpg).
   // Cuando la fecha de inicio ya pasó, la tarjeta se marca como "Ya comenzó".
   var PROXIMOS = [
     { start: "2026-11-06", name: "Operador Minero", img: "operador-minero",
       mode: "Presencial", place: "San Antonio de los Cobres, Salta",
       info: "Mercado Artesanal de la Municipalidad de San Antonio de los Cobres. Capacitación práctica y certificación para tu CV." },
-    { start: "2026-11-06", name: "Operador Polivalente de Litio", img: "operador-litio",
+    { start: "2026-11-06", name: "Operador Polivalente de Litio", img: "operador-polivalente-litio",
       mode: "Presencial", place: "San Antonio de los Cobres, Salta",
       info: "Laboratorio, soporte y logística minera. Mercado Artesanal de la Municipalidad de San Antonio de los Cobres." },
-    { start: "2026-11-16", name: "Operador Pañolero Especializado en Logística Minera", img: "panolero-logistica",
+    { start: "2026-11-16", name: "Operador Pañolero Especializado en Logística Minera", img: "logistica-minera",
       mode: "Online con docente", place: "Desde tu lugar",
       info: "Preparación específica, actualizada y profesional para introducirte en la actividad minera." },
-    { start: "2026-11-16", name: "Operador Polivalente de Litio", img: "operador-litio",
+    { start: "2026-11-16", name: "Operador Polivalente de Litio", img: "operador-polivalente-litio",
       mode: "Online con docente", place: "Desde tu lugar",
       info: "Preparación específica, actualizada y profesional para introducirte en la actividad minera." },
-    { start: "2026-11-16", name: "Operador e Instalador de Sistemas de Generación Fotovoltaica", img: "fotovoltaica",
+    { start: "2026-11-16", name: "Operador e Instalador de Sistemas de Generación Fotovoltaica", img: "op-instalador-fotovoltaicos",
       mode: "Online con docente", place: "Desde tu lugar", wa: "5493874033304",
       info: "12 clases intensivas con el Ing. Guillermo Ledesma: electricidad solar, componentes, tipos de instalaciones, seguridad y normativa." },
-    { start: "2026-12-10", name: "Operador de Plantas y Procesamientos Mineros", img: "plantas-procesamiento",
+    { start: "2026-12-10", name: "Operador de Plantas y Procesamientos Mineros", img: "operador-minero",
       mode: "Presencial", place: "Güemes, Salta", gift: true,
       info: "Formate hoy para un futuro mejor en la actividad minera." },
     { start: "2026-12-10", name: "Manipulación de Sustancias Peligrosas en Actividad Minera", img: "sustancias-peligrosas",
       mode: "Presencial", place: "Güemes, Salta", gift: true,
       info: "Formate hoy para un futuro mejor en la actividad minera." },
-    { start: "2026-12-10", name: "Asistente de Hotelería y Sistemas de Reservas", img: "hoteleria",
+    { start: "2026-12-10", name: "Asistente de Hotelería y Sistemas de Reservas", img: "recepcionista-hoteles",
       mode: "Online con docente", place: "Todo el país", gift: true,
       info: "Capacitación especialmente diseñada para trabajar en el sector turístico." },
     { start: "2026-12-11", name: "Operador Rigger y Señalador", img: "rigger-senalador",
       mode: "Presencial", place: "Ledesma, Jujuy y localidades vecinas", gift: true,
       info: "Nuevas oportunidades de formación para seguir creciendo profesionalmente." },
-    { start: "2026-12-11", name: "Operador Polivalente de Litio", img: "operador-litio",
+    { start: "2026-12-11", name: "Operador Polivalente de Litio", img: "operador-polivalente-litio",
       mode: "Presencial", place: "Ledesma, Jujuy y localidades vecinas", gift: true,
       info: "Litio, soporte y logística. Nuevas oportunidades para seguir creciendo profesionalmente." }
   ];
@@ -180,7 +181,7 @@
       art.style.animationDelay = (i * 0.06) + "s";
       var media = document.createElement("div"); media.className = "up__media";
       var img = document.createElement("img");
-      img.src = "img/proximos/" + c.img + ".svg"; img.alt = ""; img.loading = "lazy";
+      img.src = "img/cursos/" + c.img + ".jpg"; img.alt = c.name; img.loading = "lazy";
       var date = document.createElement("div"); date.className = "up__date";
       var dd = document.createElement("strong"); dd.textContent = String(d.getDate()).padStart(2, "0");
       var mm = document.createElement("span"); mm.textContent = MESES[d.getMonth()];
